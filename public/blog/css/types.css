@@ -1,0 +1,31 @@
+@media (min-width: 1200px){
+    .typies-main{
+        max-width: 1000px!important;
+    }
+}
+.typies-main{
+    margin-top:80px;
+    margin-bottom: 80px;
+}
+
+
+.types-taglist{
+   border: 1px solid rgb(212, 212, 212);
+   border-top: 0px;
+   background-color: white;
+   padding:30px;
+}
+
+.num-types{
+    color: rgba(0,0,0,.6)!important;
+    font-weight: 400;
+}
+.types-taglist > div{
+    /* display: inline-block; */
+    margin-bottom: 10px!important;
+}
+
+.acrt{
+    margin-top: 10px;
+    border-top: 5px solid #4cac5f;
+}

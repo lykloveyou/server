@@ -1,0 +1,218 @@
+/* .container{
+    max-width: 1024px;
+} */
+@media (min-width: 1200px){
+    .blog-main{
+        max-width: 1024px!important;
+    }
+}
+/* 头部 */
+.blog-header{
+    border: 1px solid  rgb(218, 216, 216);
+    display: flex;
+    background-color: white;
+    margin-top: 50px;
+    border-radius: 5px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    justify-content: space-between;
+    padding:0 20px;
+}
+
+
+
+.blog-user-info > img{
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+     object-fit: cover;
+}
+
+.blog-time,.blog-watch{
+    font-size: 14px;
+    color: rgb(97, 95, 95);
+}
+.blog-banner{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(218, 216, 216);
+}
+.blog-banner > img{
+    width: 100%;
+    object-fit: cover;
+    max-height: 500px;
+}
+
+.passage-body{
+    border: 1px solid rgb(218, 216, 216);
+    border-radius: 5px;
+    background-color: white;
+    padding: 50px 80px;
+}
+.blog-content{
+    padding:30px 0px;
+}
+.blog-tag-body{
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.blog-top-tag{
+    background-color: rgb(247, 72, 53);
+    color: white;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border-radius: 5px;
+    /* border: 1px solid rgb(218, 216, 216); */
+}
+.blog-content-header{
+    text-align: center;
+    font-size: 26px;
+    padding: 0 30px;
+    margin-bottom: 30px;
+}
+.blog-content-contxt{
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.blog-tag{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    font-size: 14px;
+    border: 1px solid #6cc47d;
+    border-radius: 5px;
+    color: #6cc47d;
+}
+.give-body{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.give{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    border:1px solid rgb(250, 88, 38);
+    color: rgb(250, 88, 38);
+    border-radius: 20px;
+    font-size: 15px;
+
+}
+.img-hover{
+    width: 150px;
+    height: 150px;
+}
+
+.hover-body{
+    display: flex;
+    justify-content: space-around;
+}
+
+.pay >div{
+    margin-top: 10px;
+    text-align: center;
+}
+.popover {
+    max-width: 600px;
+}
+
+/* 作者信息 */
+.blog-info-body{
+    background-color: rgb(250, 244, 244);
+    border: 1px solid rgb(218, 216, 216);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+.blog-info-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid rgb(218, 216, 216);
+}
+.blog-info > div{
+    margin-bottom:10px;
+}
+
+/* 评论区 */
+.mess-body{
+    background-color: white;
+    /* border: 1px solid rgb(218, 216, 216); */
+    border-radius: 5px;
+    padding-top:30px  ;
+}
+.mess-body .mess{
+   height: 200px;
+   width: 100%;
+    overflow: hidden;
+    resize:none;
+    border:1px solid rgb(216, 214, 214);
+    border-radius: 5px;
+    outline: none;
+    text-indent: 1em;
+}
+
+.mess-name{
+    border: 1px solid rgb(218, 216, 216);
+    outline: 0px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.follow-container{
+   border: 1px solid rgb(218, 216, 216);
+   border-radius: 5px;
+   background-color: white;
+   padding:50px  80px;
+   margin-bottom: 80px;
+}
+
+.avater-img{
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.follow-body{
+    border: 1px solid rgb(218, 216, 216);
+    border-top: 5px solid #5bb36c;
+    border-radius: 5px;
+    padding: 50px;
+}
+
+
+@media (max-width: 991.98px) { 
+    .follow-body{
+        padding: 10px;
+    }
+    .follow-container{
+        padding: 20px;
+    }
+    .passage-body{
+       padding: 20px;
+    }
+    .blog-banner > img{
+        max-height: 300px;
+    }
+    .blog-banner{
+        min-height: 300px;
+    }
+ }
+
+ @media (min-width: 992px){
+    .blog-banner{
+        min-height: 500px;
+    }
+ }
+ @media (max-width: 575.98px) {}
+ 

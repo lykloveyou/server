@@ -1,0 +1,13 @@
+.green1{
+    color: rgb(111, 115, 121)!important;
+}
+.green1:hover{
+    color: #6cc47d!important;
+    border-color: #6cc47d!important
+}
+.tagsec-btn{
+    font-size: 10px!important;
+}
+.green2{
+    color: #6cc47d!important;
+}

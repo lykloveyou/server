@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1, user-scalable=no"">
+    <title>cocoBlog</title>
+    <link rel=" stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/blog/css/index.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2229510_55qrebh4r0v.css">
+   
+    <script crossorigin="anonymous"
+        integrity="sha512-PkyFg1MEb/EwsFAqzqvZqWdMT4ItV+E1NgOtfBC9X8UecJcO9bwirD+v/9tJwci4wTNHdNYBk4ev6ceb1hy73g=="
+        src="https://lib.baomitu.com/vue/2.6.12/vue.common.dev.min.js"></script>
+</head>
+
+<body>
+    <div id='app' >
+        <!-- 导航 -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand brand" href="/blog/index.html">COCOBLOG</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav"
+                    aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item mr-2 ml-2">
+                            <a class="nav-link" href="/blog/index.html">首页</a>
+                        </li>
+                        <li class="nav-item mr-2 ml-2">
+                            <a class="nav-link" href="/blog/tag.html">标签</a>
+                        </li>
+                        <li class="nav-item mr-2 ml-2">
+                            <a class="nav-link " href="/blog/types.html">分类</a>
+                        </li>
+                        <li class="nav-item mr-2 ml-2">
+                            <a class="nav-link " href="/blog/time.html">归档</a>
+                        </li>
+                        <li class="nav-item mr-2 ml-2">
+                            <a class="nav-link " href="/blog/aboutme.html">关于我</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+        <!-- 主题内容 -->
+        <div class="container main">
+            <div class="row" >
+
+                <!-- 文章 左 -->
+                <div class="col-lg-8 act-box">
+                    <!-- 头部 -->
+                    <div class="Bigtitle">
+                        <span class="left">博 文</span>
+                        <div class="right">
+                            共 <span class="num"> {{blogNum}}</span> 篇
+                        </div>
+                    </div>
+                    <!-- 文章 -->
+                    <div class="acrt">
+                        <div class="one" v-for="(item,i) in blog" :key=item.id @click='goToDetail(item.id)'>
+                            <div class="actbox">
+                                <div class="body">
+                                    <h5 class="title">{{item.title}}</h5>
+                                    <div class="actcontext">
+                                        {{item.descti}}
+                                    </div>
+                                </div>
+                                <img :src=item.first_pic />
+                            </div>
+                            <div class="tag-box">
+                                <div class="">
+                                    <span class="name ">coconan</span>
+                                    <span class="name iconfont icon-rili">{{item.update_time | formDate}}</span>
+                                    <span class="name iconfont icon-liulan">{{item.views}}</span>
+                                </div>
+                                <div>
+                                    <span class="button-tag" v-for="(tag,i) in item.tag" :key=i>{{tag.name}}</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 分页 -->
+                    <div class="page">
+                        <span @click="pre">上一页</span>
+                        <span @click="next">下一页</span>
+                    </div>
+                </div>
+
+
+                <!-- 小格子 右 -->
+                <div class="col-lg-4 litter-box">
+                    <!-- 列表 -->
+                    <div class="list">
+                        <div class="header">
+                            <span>分类</span>
+                            <a href="/blog/types.html" >more </a>
+                        </div>
+                        <div>
+                            <ul class="list-group list-group-flush ">
+                                <li  style="cursor: pointer;" class="list-group-item" v-for="(item,i) in type.slice(0,5)" :key=item.id
+                                    @click="gotoType(item.id)">
+                                    <span>{{item.name}}</span>
+                                    <span class="total">{{item.num}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 标签 -->
+                    <div class="tag">
+                        <div class="header">
+                            <span>标签</span>
+                            <a href="/blog/tag.html">more</a>
+                        </div>
+                        <div class="tag-body">
+                            <a   style="cursor: pointer;" href="#" class="btn  tag-list" v-for="(item,i) in tag.slice(0,8)" :key=item.id
+                                @click="gotoTag(item.id)">{{item.name}}</a>
+                        </div>
+                    </div>
+                    <!-- 分页 -->
+                    <div class="sort">
+                        <div class="header">
+                            <span>最新推荐</span>
+                        </div>
+                        <div>
+                            <ul class="list-group list-group-flush onelist">
+                                <li class="list-group-item" v-for="(item,i) in rem" :key=item.id
+                                    @click=goToDetail(item.id)  style="cursor: pointer;">
+                                    <span>{{item.title}}</span>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="code"> &nbsp;&nbsp;扫码关注我&nbsp; &nbsp;</div>
+                    <div class="imgbox-code">
+                        <img src="/blog/img/2.jpg" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 页尾 -->
+        <footer class="bg-dark">
+            <div class="container pt-5">
+                <div class="row firstFooter">
+                    <div class="col-lg-8">
+                        <ul class="row ">
+                            <li class="col-lg-4 tc footerboder"><img src="/blog/img/2.jpg" alt="" width="100px"
+                                    height="100px;">
+                            </li>
+                            <li class="col-lg-4 tc footerboder">
+                                <h6 class="h6">最新博客</h6>
+                                <p>
+                                    <div> 用户故事 (User Story)</div>
+                                    <div> 关于可以练习的清单</div>
+                                    <div> 失败要趁早</div>
+                                </p>
+                            </li>
+                            <li class="col-lg-4 tc footerboder">
+                                <h6 class="h6">联系我</h6>
+                                <p>
+                                    <div> Email: wxnyx@163.com</div>
+                                    <div> QQ: 1065089116</div>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 tc">
+                        <h6 class="h6">coconan</h6>
+                        <p class="lastp">
+                            这是我的个人博客、会分享关于编程、个人思考、个人日常等相关内容，希望可以带给
+                            大家一点点帮助...
+                        </p>
+                    </div>
+                </div>
+                <div class="secondFooter">
+                    Copyright © 2019-2020 coconanBlog Designed by coconan.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <script crossorigin="anonymous"
+        integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+        src="https://lib.baomitu.com/axios/0.21.0/axios.min.js"></script>
+    <script src="/blog/js/index.js"></script>
+
+</body>
+
+</html>

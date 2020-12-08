@@ -1,0 +1,14 @@
+.lione{
+    margin:50px 0px;
+    margin-bottom: 80px;
+}
+.lione h2{
+    text-align: center;
+}
+.list-group >li{
+    display: flex;
+    justify-content: space-between;
+}
+.time-title{
+    margin-right: 10px;
+}
